@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Resizer
 
-## Getting Started
+This package is not available in `npm`, but it's easy to add. It's been written in `TSX`.
 
-First, run the development server:
+## How to use?
 
-```bash
-npm run dev
-# or
-yarn dev
+```tsx
+import type { NextPage } from "next";
+import Resizer from "./lib/components/Resizer";
+
+const Home: NextPage = () => {
+  return (
+    <Resizer>
+      <span>Resize me</span>
+    </Resizer>
+  );
+};
+
+export default Home;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customisations
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```ts
+interface ResizerProps {
+  className?: string; // a custom class for your element.
+  minWidth?: number; // the minimum width of the box.
+  maxWidth?: number; // the maximum width of the box.
+  minHeight?: number; // the minimum height of the box.
+  maxHeight?: number; // the maximum height of the box.
+  right?: boolean; // whether you want it to be resizeable on the right side or not. True by default.
+  bottom?: boolean; // whether you want it to be resizeable on the bottom side or not. True by default.
+  draggable?: boolean; // whether you want it to be draggable or not.
+  children?: React.ReactNode; // the content of your element.
+}
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+> NOTE : if your element is draggable, then its content cannot be selected with the cursor.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+MIT License.
